@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - HomePage</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<script type="text/x-template" id="modal-template">
+  <transition name='modal'>
+    <div class='modal-mask'>
+      <div class='modal-wrapper'>
+        <div class='modal-container'>
+          
+          <div class='modal-header'>
+            <slot name='header'>
+              default header
+            </slot>    
+          </div>
+          
+          <div class='modal-body'>
+            <h1><slot name='body'>
+              Log in    
+  </slot></h1>    
+          </div>
+          
+          <div class='modal-footer'>
+            <slot name='footer'>
+              <form action="用戶管理.php">
+            <input type="text" id="username" name="username" placeholder="帳號" required>
+            <div class="tab"></div>
+              <br>
+            <input type="text" id="password" name="password" placeholder="密碼" required>
+            <div class="tab"></div>
+              <br>
+              <button class='modal-default-button' @click='$emit("close")'>
+                Log in
+              </button>
+            </slot>    
+          </div>
+        </div>    
+      </div>  
+    </div>
+  </transition>
+</script>
+
+<!-- app -->
+<div id='app'>
+  <h1><CENTER>Welcome<CENTER></h1>
+  <BR>
+  <BR>
+  <hr/>
+  <CENTER><button id='show-modal' @click='showModal = true'>Log in</button>
+  &nbsp&nbsp
+  <button id='show-modal' @click='showModal = true'>Sign up</button>
+  <modal v-if='showModal' @close='showModal = false'>
+    <h3 slot="header"></h3>
+  </modal>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
